@@ -12,7 +12,8 @@
     "url": "git+https://github.com/zjr222/vue-admin.git"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port=8000",
+    "mock": "cross-env VITE_USE_MOCK vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
@@ -22,18 +23,26 @@
     "package.json": "sort-package-json"
   },
   "dependencies": {
-    "ant-design-vue": "^3.2.10",
-    "eslint": "^8.20.0",
-    "jest": "^28.1.3",
-    "pinia": "^2.0.17",
-    "prettier": "^2.7.1",
-    "ts-jest": "^28.0.7",
-    "vue": "^3.2.37"
+    "@types/qs": "^6.9.7",
+    "ant-design-vue": "^3.2.10"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.0",
+    "axios": "^0.27.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.20.0",
+    "jest": "^28.1.3",
+    "mockjs": "^1.1.0",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.0.17",
+    "prettier": "^2.7.1",
+    "qs": "^6.11.0",
+    "ts-jest": "^28.0.7",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
+    "vite-plugin-mock": "^2.9.6",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.3",
     "vue-tsc": "^0.38.4"
   }
 }
