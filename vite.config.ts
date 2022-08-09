@@ -1,6 +1,15 @@
 import { ConfigEnv, UserConfig } from 'vite'
 import { resolve } from 'path'
 import { viteMockServe } from 'vite-plugin-mock'
+import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import {
+  createStyleImportPlugin,
+  AndDesignVueResolve,
+} from 'vite-plugin-style-import'
+import {
+  AntDesignVueResolver,
+} from 'unplugin-vue-components/resolvers'
 import vue from '@vitejs/plugin-vue'
 
 
@@ -8,19 +17,47 @@ import vue from '@vitejs/plugin-vue'
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   return {
     base: './',
-    plugins: [vue(),
-    viteMockServe({
-      mockPath: "mock", // 你的mock文件地址
-      localEnabled: command === "serve", // 开发环境
-      prodEnabled: command !== "serve", // 生产环境 
-      watchFiles: true, // 监视文件更改
-      // injectCode: `
-      //   import { setupProdMockServer } from './utils/mockProdServer';
-      //   setupProdMockServer();
-      // `,   //  这样可以控制关闭mock的时候不让mock打包到最终代码内
-      // // 如果prodEnable设置为true，则在编译打包的时候，会把mock的文件打包进去，如果你不写injectFile，那就是默认注入到main.ts/main.js
-      // injectFile: resolve("src/main.tsx"),      // 在全局中注入代码,不配置的话默认是在src/main.js/main.ts
-    })],
+    plugins: [
+      vue(),
+      viteMockServe({
+        mockPath: "mock", // 你的mock文件地址
+        localEnabled: command === "serve", // 开发环境
+        prodEnabled: command !== "serve", // 生产环境 
+        watchFiles: true, // 监视文件更改
+      }),
+      Components({
+        // ui库解析器，也可以自定义
+        resolvers: [
+          AntDesignVueResolver()
+        ]
+      }),
+      AutoImport({
+        imports: ['vue', 'vue-router'],
+        dts: 'src/auto-import.d.ts'
+      }),
+      createStyleImportPlugin({
+        resolves: [
+          AndDesignVueResolve(),
+        ],
+        libs: [
+          // If you don’t have the resolve you need, you can write it directly in the lib, or you can provide us with PR
+          {
+            libraryName: 'ant-design-vue',
+            esModule: true,
+            resolveStyle: (name) => {
+              return `ant-design-vue/es/${name}/style/index`
+            },
+          },
+        ],
+      }),
+    ],
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+        },
+      },
+    },
     resolve: {
       alias: {
         "@/": resolve(__dirname, 'src'),
@@ -31,17 +68,17 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         "@/https": resolve(__dirname, 'src/https'),
       }
     },
-    server: {
-      hmr: true,
-      proxy: {
-        // 字符串简写写法
-        // 选项写法
-        '/api': {
-          target: 'http://jsonplaceholder.typicode.com',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        },
-      }
-    }
+    // server: {
+    //   hmr: true,
+    //   proxy: {
+    //     // 字符串简写写法
+    //     // 选项写法
+    //     '/api': {
+    //       target: 'http://jsonplaceholder.typicode.com',
+    //       changeOrigin: true,
+    //       rewrite: (path) => path.replace(/^\/api/, '')
+    //     },
+    //   }
+    // }
   }
 }

@@ -2,7 +2,7 @@ const DynamicRoute = [
     {
         path: '/',
         name: 'main',
-        component: () => import('@/pages/Layout.vue'),
+        component: () => import('@/pages/Layout/index.vue'),
         redirect: { name: 'home' },
         meta: { title: "首页" },
         children: [
