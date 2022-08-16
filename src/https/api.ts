@@ -5,7 +5,7 @@ import { message } from 'ant-design-vue'
 import { IResponse, ILogin } from './type';
 
 let axiosInstance: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VUE_APP_BASE_URL + "/api/",
+    baseURL: "/",
     headers: {
         Accept: "application/json",
         "Content-Type": "application/x-www-form-urlencoded"

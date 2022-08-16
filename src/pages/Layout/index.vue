@@ -1,8 +1,7 @@
 <template>
     <a-layout>
-        <Header :selected-keys1="data.selectedKeys1"></Header>
+        <Header :selected-keys="data.selectedKeys"></Header>
         <a-layout>
-            <Sider :selected-keys2="data.selectedKeys2" :open-keys="data.openKeys"></Sider>
             <Content></Content>
         </a-layout>
     </a-layout>
@@ -12,14 +11,12 @@ import Content from './Content.vue';
 import Sider from './Sider.vue';
 import Header from './Header.vue';
 type Props = {
-    selectedKeys1: string[];
-    selectedKeys2: string[];
+    selectedKeys: string[];
     collapsed: boolean;
     openKeys: string[];
 }
 const data = reactive<Props>({
-    selectedKeys1: ['2'],
-    selectedKeys2: ['1'],
+    selectedKeys: ['1'],
     collapsed: false,
     openKeys: ['sub1'],
 })
@@ -27,5 +24,9 @@ const data = reactive<Props>({
 <style>
 .site-layout-background {
     background: #fff;
+}
+
+.adjustment-height {
+    min-height: 720px;
 }
 </style>
