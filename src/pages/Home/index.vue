@@ -1,13 +1,10 @@
 <template>
-    <div>
-      主页
-    </div>
+  <div style="padding: 20px">
+    <h1 style="text-align: center">首页</h1>
+  </div>
 </template>
 <script setup lang="ts">
-// export default {
-    
-// }
 </script>
-<style>
-    
+
+<style lang="less" scoped>
 </style>

@@ -32,7 +32,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       Components({
         // ui库解析器，也可以自定义
         resolvers: [
-          AntDesignVueResolver()
+          AntDesignVueResolver({ importStyle: "less" })
         ]
       }),
       AutoImport({
@@ -44,7 +44,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           AndDesignVueResolve(),
         ],
         libs: [
-          // If you don’t have the resolve you need, you can write it directly in the lib, or you can provide us with PR
           {
             libraryName: 'ant-design-vue',
             esModule: true,
@@ -55,11 +54,13 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         ],
       }),
       themePreprocessorPlugin({
-        // 使用Less
         less: {
-          // 此处配置自己的主题文件
+          // 是否启用任意主题色模式，这里不启用
+          arbitraryMode: false,
+          // 提供多组变量文件
           multipleScopeVars: [
             {
+              // 必需
               scopeName: "theme-default",
               path: path.resolve("src/theme/default.less"),
             },
@@ -68,8 +69,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
               path: path.resolve("src/theme/dark.less"),
             },
           ],
-          defaultScopeName: "theme-default", // 默认取 multipleScopeVars[0].scopeName
-          extract: false,// 在生产模式是否抽取独立的主题css文件
+          extract: false,
         },
       }),
       // develop need theme HMR
@@ -81,6 +81,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           javascriptEnabled: true,
         },
       },
+    },
+    optimizeDeps: {
+      // 排除 browser-utils.js 在vite的缓存依赖
+      exclude: ["@zougt/vite-plugin-theme-preprocessor/dist/browser-utils"],
     },
     resolve: {
       alias: {

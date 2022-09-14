@@ -35,7 +35,8 @@
     </a-form>
 </template>
 <script lang="ts" setup>
-console.log('login');
+import { useLoginState } from '@/store'
+import router from '../routes';
 
 interface FormState {
     username: string;
@@ -50,7 +51,8 @@ const formState = reactive<FormState>({
 });
 const onFinish = (values: any) => {
     console.log('Success:', values);
-    sessionStorage.setItem('login', 'loginIn')
+    useLoginState().changeLoginState();
+    router.push('/home')
 };
 
 const onFinishFailed = (errorInfo: any) => {

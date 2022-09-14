@@ -12,13 +12,12 @@ export const dynaimcRoutes = [
         path: '/',
         name: 'main',
         exact: true,
-        component: () => import('@/pages/Layout/index.vue'),
         redirect: { name: 'home' },
         meta: { title: "首页", requireAuth: true, singlePage: false },
         children: [
             {
-                name: 'home',
                 path: '/home',
+                name: 'home',
                 meta: { requireAuth: true, },
                 component: () => import('@/pages/Home/index.vue'),
             }

@@ -8,6 +8,12 @@ export const NavRoutes = [
         cname: '主页',
         ename: 'HOME'
     },
+    {
+        path: '/login',
+        name: 'login',
+        cname: '登录',
+        ename: 'LOGIN'
+    }
     // {
     //     path: '/archives',
     //     name: 'archives',

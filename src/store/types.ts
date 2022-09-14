@@ -3,7 +3,8 @@
  */
 export enum NAMESPACE {
     USER_OPERATE = 'user_operate',
-    LOCALE_CONFIG = 'locale_config'
+    LOCALE_CONFIG = 'locale_config',
+    LOGIN_STATE = ' login_state'
 }
 
 /**

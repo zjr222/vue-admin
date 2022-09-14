@@ -38,3 +38,16 @@ export const useLocale = defineStore(NAMESPACE.LOCALE_CONFIG, {
         }
     }
 })
+
+export const useLoginState = defineStore(NAMESPACE.LOGIN_STATE, {
+    state: () => {
+        return {
+            isLogin: true
+        }
+    },
+    actions: {
+        changeLoginState() {
+            this.isLogin = !this.isLogin;
+        }
+    }
+})
