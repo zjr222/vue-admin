@@ -1,5 +1,4 @@
 <template>
-
     <a-layout class="container">
         <div class="main-banner">
             <header class="header">
@@ -8,7 +7,7 @@
                         <a-avatar class="avatar" src="https://joeschmoe.io/api/v1/random" />
                     </div>
                     <div class="left">
-                        <a-menu class="left-menu" v-model:selectedKeys="selectedKeys" theme="dark" mode="horizontal"
+                        <a-menu class="left-menu" v-model:selectedKeys="selectedKeys" theme="light" mode="horizontal"
                             :style="{ lineHeight: '64px' }">
                             <a-menu-item class="menu-item" v-for="route in NavRoutes" :key="route.name">
                                 <router-link :to="route.path">{{

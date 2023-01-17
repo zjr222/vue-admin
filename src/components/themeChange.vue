@@ -20,7 +20,6 @@ import { ConfigProvider, message } from 'ant-design-vue';
 const checked = ref(false);
 const changeTheme = (check: boolean) => {
     message.info("切换主题色！")
-    console.log(check);
     if (check) {
         toggleTheme({
             scopeName: "theme-dark",
