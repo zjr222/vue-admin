@@ -1,0 +1,10 @@
+# 忽略构建输出
+/dist
+
+# 忽略测试覆盖率报告
+/coverage
+
+# 忽略特定文件
+/src/utils/config.js
+/package.json
+/package-lock.json

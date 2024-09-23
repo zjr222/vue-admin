@@ -7,49 +7,24 @@
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
-    "lib": [
-      "es2015",
-      "es2017",
-      "ESNext",
-      "dom"
-    ],
+    "lib": ["es2015", "es2017", "ESNext", "dom"],
     "baseUrl": "./",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
     "noImplicitAny": false, //是否不允许隐式的any，默认false（允许）
     "paths": {
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/pages/*": [
-        "src/pages/*"
-      ],
-      "@/utils/*": [
-        "src/utils/*"
-      ],
-      "@/routes/*": [
-        "src/routes/*"
-      ],
-      "@/store/*": [
-        "src/store/*"
-      ],
-      "@/*": [
-        "src/*"
-      ]
+      "@/components/*": ["src/components/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/routes/*": ["src/routes/*"],
+      "@/store/*": ["src/store/*"],
+      "@/*": ["src/*"]
     },
     "skipLibCheck": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue"
-  ],
-  "exclude": [
-    "./node_modules/**/*",
-    "./build/**/*"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["./node_modules/**/*", "./build/**/*"],
   "references": [
     {
       "path": "./tsconfig.node.json"

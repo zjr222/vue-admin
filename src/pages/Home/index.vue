@@ -3,9 +3,6 @@
     <h1 style="text-align: center">首页</h1>
   </div>
 </template>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

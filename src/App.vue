@@ -10,12 +10,11 @@ import Layout from '@/pages/Layout/index.vue'
 import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import enUS from 'ant-design-vue/es/locale/en_US'
 import dayjs from 'dayjs'
-import 'dayjs/locale/zh-cn';
+import 'dayjs/locale/zh-cn'
 import { useLocale } from '@/store'
-import ThemeChange from './components/themeChange.vue';
-dayjs.locale('zh-cn');
-const store = useLocale();
-
+import ThemeChange from './components/themeChange.vue'
+dayjs.locale('zh-cn')
+const store = useLocale()
 </script>
 
 <style lang="less">

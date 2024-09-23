@@ -1,10 +1,10 @@
 export interface ILogin {
-    username: string;
-    password: string;
-};
+  username: string
+  password: string
+}
 
 export interface IResponse {
-    code: number;
-    success: boolean;
-    data: any;
+  code: number
+  success: boolean
+  data: any
 }

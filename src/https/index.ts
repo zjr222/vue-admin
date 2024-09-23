@@ -1,3 +1,2 @@
-import { axiosInstance } from './api';
-export default axiosInstance;
-
+import { axiosInstance } from './api'
+export default axiosInstance
